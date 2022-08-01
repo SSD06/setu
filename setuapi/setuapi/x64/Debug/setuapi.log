@@ -1,15 +1,9 @@
-﻿  uic Widget1.ui
-  rcc setuapi.qrc
-  moc widget1.h
-  quanju.cpp
-  widget1.cpp
-  xunh.cpp
+﻿  uic setuapi.ui
+  moc setuapi.h
+  moc huoqu.h
   huoqu.cpp
-  setuapi.cpp
   main.cpp
-  moc_setuapi.cpp
-  moc_xunh.cpp
+  setuapi.cpp
   moc_huoqu.cpp
-  qrc_setuapi.cpp
-  moc_widget1.cpp
-  setuapi.vcxproj -> D:\VS2017XM\setu\setuapi\x64\Debug\setuapi.exe
+  moc_setuapi.cpp
+  setuapi.vcxproj -> D:\VS2017XM\setuapi\x64\Debug\setuapi.exe

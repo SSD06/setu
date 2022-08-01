@@ -87,22 +87,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="quanju.cpp" />
-    <ClCompile Include="widget1.cpp" />
-    <ClCompile Include="xunh.cpp" />
     <QtRcc Include="setuapi.qrc" />
     <QtUic Include="setuapi.ui" />
     <QtMoc Include="setuapi.h" />
     <ClCompile Include="huoqu.cpp" />
     <ClCompile Include="setuapi.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="Widget1.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="xunh.h" />
-    <QtMoc Include="widget1.h" />
     <QtMoc Include="huoqu.h" />
-    <ClInclude Include="quanju.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

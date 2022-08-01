@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -36,13 +37,17 @@ public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QSpacerItem *horizontalSpacer;
+    QGroupBox *groupBox_3;
+    QVBoxLayout *verticalLayout_3;
+    QSpinBox *spinBox;
+    QSpacerItem *horizontalSpacer_4;
+    QGroupBox *groupBox_2;
+    QVBoxLayout *verticalLayout_2;
     QLineEdit *lineEdit;
     QLabel *label_2;
-    QWidget *widget_3;
-    QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer_4;
+    QSpacerItem *horizontalSpacer_5;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *radioButton;
@@ -61,7 +66,7 @@ public:
         if (setuapiClass->objectName().isEmpty())
             setuapiClass->setObjectName(QString::fromUtf8("setuapiClass"));
         setuapiClass->setWindowModality(Qt::NonModal);
-        setuapiClass->resize(553, 528);
+        setuapiClass->resize(742, 572);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/setuapi/tubiao"), QSize(), QIcon::Normal, QIcon::Off);
         setuapiClass->setWindowIcon(icon);
@@ -86,36 +91,59 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton = new QPushButton(widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(pushButton);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        lineEdit = new QLineEdit(widget);
+        groupBox_3 = new QGroupBox(widget);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        verticalLayout_3 = new QVBoxLayout(groupBox_3);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        spinBox = new QSpinBox(groupBox_3);
+        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBox->setMinimum(1);
+        spinBox->setMaximum(200);
+
+        verticalLayout_3->addWidget(spinBox);
+
+
+        horizontalLayout->addWidget(groupBox_3);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        groupBox_2 = new QGroupBox(widget);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        verticalLayout_2 = new QVBoxLayout(groupBox_2);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        lineEdit = new QLineEdit(groupBox_2);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
-        horizontalLayout->addWidget(lineEdit);
+        verticalLayout_2->addWidget(lineEdit);
+
+
+        horizontalLayout->addWidget(groupBox_2);
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout->addWidget(label_2);
 
-        widget_3 = new QWidget(widget);
-        widget_3->setObjectName(QString::fromUtf8("widget_3"));
-        horizontalLayout_3 = new QHBoxLayout(widget_3);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_4);
+        horizontalLayout->addItem(horizontalSpacer_5);
 
-        groupBox = new QGroupBox(widget_3);
+        groupBox = new QGroupBox(widget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setLayoutDirection(Qt::LeftToRight);
         groupBox->setAutoFillBackground(false);
@@ -125,6 +153,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         radioButton = new QRadioButton(groupBox);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButton->setChecked(true);
 
         horizontalLayout_4->addWidget(radioButton);
 
@@ -139,10 +168,7 @@ public:
         horizontalLayout_4->addWidget(radioButton_3);
 
 
-        horizontalLayout_3->addWidget(groupBox);
-
-
-        horizontalLayout->addWidget(widget_3);
+        horizontalLayout->addWidget(groupBox);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -169,7 +195,7 @@ public:
         setuapiClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(setuapiClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 553, 23));
+        menuBar->setGeometry(QRect(0, 0, 742, 23));
         setuapiClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(setuapiClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -186,7 +212,9 @@ public:
     void retranslateUi(QMainWindow *setuapiClass)
     {
         setuapiClass->setWindowTitle(QCoreApplication::translate("setuapiClass", "\350\211\262\345\233\276\350\216\267\345\217\226\345\231\250", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("setuapiClass", "\351\232\217\346\234\272\350\211\262\345\233\276", nullptr));
+        pushButton->setText(QCoreApplication::translate("setuapiClass", "\351\232\217\346\234\272\350\211\262\345\233\276", nullptr));
+        groupBox_3->setTitle(QCoreApplication::translate("setuapiClass", "\350\246\201\345\220\257\347\224\250\347\232\204\347\272\277\347\250\213\346\225\260\357\274\232", nullptr));
+        groupBox_2->setTitle(QCoreApplication::translate("setuapiClass", "\350\246\201\350\216\267\345\217\226\347\232\204\347\261\273\345\236\213\357\274\232", nullptr));
         label_2->setText(QString());
         groupBox->setTitle(QCoreApplication::translate("setuapiClass", "R18\351\200\211\351\241\271", nullptr));
         radioButton->setText(QCoreApplication::translate("setuapiClass", "R18\345\205\263\351\227\255", nullptr));

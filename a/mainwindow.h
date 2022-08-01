@@ -1,6 +1,7 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "ui_mainwindow.h"
+#include "huoqu.h"
 #include <QMainWindow>
 #include<QLineEdit>
 #include <QCompleter>
@@ -19,8 +20,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    Ui::MainWindow *ui;
-private:
 
+private:
+    Ui::MainWindow *ui;
+    QVector<QSharedPointer<huoqu>> Threads;
+    void LoadImage();
+    QQueue<QString> Filenames;
+    bool checkPermission();
+    void Dirmik();
+    QTimer *timer;
+    QMutex Mutex_filename;
 };
 #endif // MAINWINDOW_H

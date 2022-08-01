@@ -20,15 +20,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     huoqu.cpp \
     main.cpp \
-    mainwindow.cpp \
-    quanju.cpp \
-    xunh.cpp
+    mainwindow.cpp
 
 HEADERS += \
     huoqu.h \
-    mainwindow.h \
-    quanju.h \
-    xunh.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
@@ -48,3 +44,6 @@ DISTFILES += \
     android/res/values/libs.xml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+RESOURCES += \
+    res.qrc
