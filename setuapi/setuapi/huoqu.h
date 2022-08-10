@@ -60,7 +60,7 @@ private:
 	//QNetworkRequest requestInfo;
 	//QNetworkRequest requestInfo1;
 	QString  curPath;
-	QString sub = "ɫͼ";
+	QString sub = "色图";
 	QString filename;
 
 signals:
