@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/setuapi">
+        <file alias="tubiao">bitbug_favicon.ico</file>
+        <file>lightblue.css</file>
+    </qresource>
+</RCC>
