@@ -41,6 +41,7 @@ protected:
 	void run() Q_DECL_OVERRIDE;
 private:
 	QString apiurl = "https://api.lolicon.app/setu/v2/?";
+	const QRegExp regexp = QRegExp("[\\\\/:*?\"<>|]");
 	QString tag;
 	int isR18;
 	int threadnum;

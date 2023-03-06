@@ -62,10 +62,12 @@ void huoqu::run()
 
 
         QString title = QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("title").toString();
+        title.replace(regexp,"-");
+        QString ext = QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("ext").toString();
         QString pid = QString::number(QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("pid").toInt());
         //qDebug() << s1;
         //qDebug() << QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("title").toString();
-        filename = tr("/storage/emulated/0/色图/")+ QString("%1%2.%3").arg(title).arg(pid).arg(s1.right(3));
+        filename = tr("/storage/emulated/0/色图/")+ QString("%1%2.%3").arg(title).arg(pid).arg(ext);
         f1.setFileName(filename);
         if (f1.exists())
         {
