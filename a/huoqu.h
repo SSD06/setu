@@ -9,6 +9,7 @@
 #include<QJsonArray>
 #include<QJsonDocument>
 #include<QJsonObject>
+#include<QFile>
 class huoqu : public QThread
 {
     Q_OBJECT
@@ -36,11 +37,12 @@ private:
     int isR18;
     int threadnum;
     bool stop=false;
-    QSharedPointer<QPixmap>currentPicture;
+    //QSharedPointer<QPixmap>currentPicture;
     QString url;
     QString s1;
     QByteArray responseByte;
     QString filename;
+    QFile f1;
 
 signals:
     void jieshu(QString filename);

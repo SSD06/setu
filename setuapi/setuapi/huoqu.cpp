@@ -6,7 +6,7 @@ huoqu::huoqu()
 	m_pHttpMgr1.reset(new QNetworkAccessManager());*/
 	//eventLoop.reset(new QEventLoop);
 	//eventLoop1.reset(new QEventLoop);
-	currentPicture.reset(new QPixmap());
+	//currentPicture.reset(new QPixmap());
 	curPath = QDir::currentPath();
 }
 void huoqu::run()
@@ -31,7 +31,7 @@ void huoqu::run()
 		//disconnect(reply.get(), SIGNAL(finished()), &eventLoop, SLOT(quit()));
 		disconnect(reply, SIGNAL(finished()), &eventLoop, SLOT(quit()));
 		//错误处理
-		if (reply->error() == QNetworkReply::NoError)
+		if (reply->error() == QNetworkReply::NoError&& !stop)
 		{
 			//qDebug() << "request protobufHttp NoError 1";
 		}
@@ -58,10 +58,17 @@ void huoqu::run()
 		{
 			continue;
 		}
+		QString title = QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("title").toString();
+		QString pid = QString::number(QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("pid").toInt());
 		//qDebug() << s1;
-
-
-
+		//qDebug() << QJsonDocument::fromJson(responseByte).object().value("data").toArray().at(0).toObject().value("title").toString();
+		filename = curPath + "/" + sub + "/"+ QString("%1%2.%3").arg(title).arg(pid).arg(s1.right(3));
+		f1.setFileName(filename);
+		if (f1.exists())
+		{
+			continue;
+		}
+		
 		//QNetworkAccessManager* m_pHttpMgr1 = new QNetworkAccessManager();
 		QSharedPointer<QNetworkAccessManager> m_pHttpMgr1(new QNetworkAccessManager());
 		//设置url
@@ -80,7 +87,7 @@ void huoqu::run()
 		//disconnect(reply1.get(), SIGNAL(finished()), &eventLoop1, SLOT(quit()));
 		disconnect(reply1, SIGNAL(finished()), &eventLoop1, SLOT(quit()));
 		//错误处理
-		if (reply1->error() == QNetworkReply::NoError)
+		if (reply1->error() == QNetworkReply::NoError && !stop)
 		{
 			//qDebug() << "request protobufHttp NoError 2";
 		}
@@ -101,9 +108,14 @@ void huoqu::run()
 		//delete reply1;
 		reply1->deleteLater();
 		reply1 = nullptr;
-		currentPicture->loadFromData(responseByte);
-		filename = curPath + "/" + sub + "/" + QString::number(threadnum) + QDateTime::currentDateTime().toString("yyMMddhhmmss.%1").arg(s1.right(3));
-		currentPicture->save(filename);//保存图片
+		if (!f1.open(QIODevice::WriteOnly)) {
+			continue;
+		}
+		f1.write(responseByte);
+		f1.close();
+		//currentPicture->loadFromData(responseByte);
+		//filename = curPath + "/" + sub + "/" + QString::number(threadnum) + QDateTime::currentDateTime().toString("yyMMddhhmmss.%1").arg(s1.right(3));
+		//currentPicture->save(filename);//保存图片
 		//qDebug() << filename;
 		emit jieshu(filename);
 	}
@@ -161,7 +173,8 @@ huoqu::~huoqu()
 {
 	/*m_pHttpMgr.clear();
 	m_pHttpMgr1.clear();*/
-	currentPicture.clear();
+	//currentPicture.clear();
+	f1.close();
 }
 
 QString huoqu::getTag() const

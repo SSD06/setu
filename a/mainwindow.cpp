@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     checkPermission();
     Dirmik();
+    ui->label->setScaledContents(true);
     timer=new QTimer();
     connect(timer,&QTimer::timeout,this,&MainWindow::LoadImage);
 
@@ -135,20 +136,12 @@ void MainWindow::LoadImage()
         QString filename;
         filename=Filenames.dequeue();
 
-        QImage Image;
-        if(Image.load(filename))
+        QPixmap pixmap;
+        if(pixmap.load(filename))
         {
+            pixmap = pixmap.scaled(ui->label->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
-            QPixmap pixmap = QPixmap::fromImage(Image);
-
-            int with = ui->label->width();
-            int height = ui->label->height();
-
-            QPixmap fitpixmap = pixmap.scaled(with, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-
-            ui->label->setPixmap(fitpixmap);
-
-            ui->label->setScaledContents(true);
+            ui->label->setPixmap(pixmap);
         }
     }
 }

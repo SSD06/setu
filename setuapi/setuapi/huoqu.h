@@ -15,6 +15,7 @@
 #include<qmovie.h>
 #include<QButtonGroup>
 #include<QThread>
+#include<QFile>
 class huoqu :public QThread
 {
 	Q_OBJECT
@@ -48,7 +49,7 @@ private:
 	//QSharedPointer<QNetworkReply> reply;
 	//QSharedPointer<QNetworkAccessManager> m_pHttpMgr1;
 	//QSharedPointer<QNetworkReply> reply1;
-	QSharedPointer<QPixmap>currentPicture;
+	//QSharedPointer<QPixmap>currentPicture;
 	QString url;
 	//QEventLoop eventLoop;
 	//QEventLoop eventLoop1;
@@ -62,6 +63,7 @@ private:
 	QString  curPath;
 	QString sub = "色图";
 	QString filename;
+	QFile f1;
 
 signals:
 	void jieshu(QString filename);

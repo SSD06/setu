@@ -9,7 +9,7 @@ setuapi::setuapi(QWidget *parent)
 {
 	ui.setupUi(this);
 	Dirmik();
-
+	ui.label->setScaledContents(true);
 	timer = new QTimer();
 	connect(timer, &QTimer::timeout, this, &setuapi::LoadImage);
 	connect(ui.pushButton, &QPushButton::clicked, [=]() {
@@ -121,19 +121,13 @@ void setuapi::LoadImage()
 		QString filename;
 		filename = Filenames.dequeue();
 		//qDebug() << filename;
-		QImage Image;
-		if (Image.load(filename))
+		QPixmap pixmap;
+		if (pixmap.load(filename))
 		{
-			QPixmap pixmap = QPixmap::fromImage(Image);
-
-			int with = ui.label->width();
-			int height = ui.label->height();
-
-			QPixmap fitpixmap = pixmap.scaled(with, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-
-			ui.label->setPixmap(fitpixmap);
-
-			ui.label->setScaledContents(true);
+			//QPixmap fitpixmap = pixmap.scaled(with, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+			pixmap = pixmap.scaled(ui.label->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+			ui.label->setPixmap(pixmap);
+			//ui.label->setScaledContents(true);
 		}
 	}
 }
